@@ -1,0 +1,136 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Dealer Profile Management API",
+        "description": "This API exposes endpoints to create dealer profiles.",
+        "termsOfService": "#",
+        "contact": {
+            "name": "Kuria Githinji",
+            "url": "https://www.linkedin.com/in/kuria-githinji-1724b1218/",
+            "email": "lgithinji@safaricom.co.ke"
+        },
+        "license": {
+            "name": "MIT License",
+            "url": "https://choosealicense.com/licenses/mit/"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "localhost:8080",
+            "description": "Server URL in Development environment"
+        },
+        {
+            "url": "localhost2:8080",
+            "description": "Server URL in Production environment"
+        }
+    ],
+    "paths": {
+        "/api/v1/dealers/create": {
+            "post": {
+                "tags": [
+                    "Create a dealer profile"
+                ],
+                "summary": "Create a dealer profile",
+                "description": "Create a dealer profile object by specifying id and username",
+                "operationId": "createDealerProfile",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DealerProfileRequestDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DealerProfileResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DealerProfileRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "userName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "msisdn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "userType": {
+                        "type": "string"
+                    },
+                    "categoryCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "userNamePrefix": {
+                        "type": "string"
+                    },
+                    "shortName": {
+                        "type": "string"
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    },
+                    "latitude": {
+                        "type": "number"
+                    }
+                }
+            },
+            "DealerProfileResponseDTO": {
+                "type": "object",
+                "properties": {
+                    "responseCode": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "responseDescription": {
+                        "type": "string"
+                    },
+                    "responseSummary": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
