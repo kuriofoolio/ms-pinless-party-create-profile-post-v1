@@ -47,7 +47,7 @@ public class DealerProfileService {
                 .status(dealerProfileRequestDTO.getStatus())
                 .userType(dealerProfileRequestDTO.getUserType())
                 .categoryCode(dealerProfileRequestDTO.getCategoryCode())
-                .createdOn(LocalDateTime.now()  )
+                .createdOn(LocalDateTime.now())
                 .createdBy(dealerProfileRequestDTO.getCreatedBy())
                 .country(dealerProfileRequestDTO.getCountry())
                 .userNamePrefix(dealerProfileRequestDTO.getUserNamePrefix())
@@ -64,7 +64,7 @@ public class DealerProfileService {
                 .responseSummary("Dealer profile created successfully")
                 .build();
 
-        return ResponseEntity.created(new URI("/api/v1/dealers/" + newDealerProfile.getUserId()))
+        return ResponseEntity.created(new URI("/auth/partnerPartyAPI/v1/partnerParty" + newDealerProfile.getUserId()))
                 .body(dealerProfileResponseDTO);
 
     }
@@ -80,7 +80,7 @@ public class DealerProfileService {
      * @throws UserNotFoundException
      */
     public ResponseEntity<DealerProfile> getDealerProfileDetailsById(Long userid) throws UserNotFoundException {
-        // using this since not sure account exists
+
         DealerProfile foundDealerProfile = dealerProfileRepository.findByUserId(userid)
                 .orElseThrow(() -> new UserNotFoundException(userid));
 

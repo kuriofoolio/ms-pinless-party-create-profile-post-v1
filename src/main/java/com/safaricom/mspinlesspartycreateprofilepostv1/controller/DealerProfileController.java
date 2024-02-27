@@ -18,14 +18,15 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 // change this
-// @Tag(name = "User Account Controller", description = "User Account Controller for User Account Service")
+@Tag(name = "Dealer Profile Controller", description = "Dealer Profile Controller for ms-pinless-party-create-profile-post-v1")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/auth/partnerPartyAPI/v1")
 public class DealerProfileController {
 
         DealerProfile dealerProfile;
@@ -47,7 +48,7 @@ public class DealerProfileController {
          * @throws URISyntaxException
          */
 
-        @Operation(summary = "Create a dealer profile", description = "Create a dealer profile object by specifying id and username", tags = {
+        @Operation(summary = "Create a dealer profile", description = "Create a dealer profile object by specifying a couple of fields", tags = {
                         "Create a dealer profile" })
         @ApiResponses({
                         @ApiResponse(responseCode = "200", content = {
@@ -58,7 +59,7 @@ public class DealerProfileController {
                         @ApiResponse(responseCode = "500", content = {
                                         @Content(schema = @Schema(implementation = DealerProfileResponseDTO.class), mediaType = "application/json")
                         }) })
-        @PostMapping("/dealers/create")
+        @PostMapping("/partnerParty")
         public ResponseEntity<DealerProfileResponseDTO> createDealerProfile(
                         @RequestBody DealerProfileRequestDTO dealerProfileRequestDTO)
                         throws URISyntaxException {

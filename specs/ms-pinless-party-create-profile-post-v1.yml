@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.1",
     "info": {
-        "title": "Dealer Profile Management API",
-        "description": "This API exposes endpoints to create dealer profiles.",
+        "title": "ms-pinless-party-create-profile-post-v1",
+        "description": "This API exposes an endpoint to create dealer profiles.",
         "termsOfService": "#",
         "contact": {
             "name": "Kuria Githinji",
@@ -25,14 +25,21 @@
             "description": "Server URL in Production environment"
         }
     ],
+    "tags": [
+        {
+            "name": "Dealer Profile Controller",
+            "description": "Dealer Profile Controller for ms-pinless-party-create-profile-post-v1"
+        }
+    ],
     "paths": {
-        "/api/v1/dealers/create": {
+        "/auth/partnerPartyAPI/v1/partnerParty": {
             "post": {
                 "tags": [
+                    "Dealer Profile Controller",
                     "Create a dealer profile"
                 ],
                 "summary": "Create a dealer profile",
-                "description": "Create a dealer profile object by specifying id and username",
+                "description": "Create a dealer profile object by specifying a couple of fields",
                 "operationId": "createDealerProfile",
                 "requestBody": {
                     "content": {
@@ -56,10 +63,24 @@
                         }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DealerProfileResponseDTO"
+                                }
+                            }
+                        }
                     },
                     "500": {
-                        "description": "Internal Server Error"
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DealerProfileResponseDTO"
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -38,10 +38,10 @@ public class OpenAPIConfig {
         License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
         Info info = new Info()
-                .title("Dealer Profile Management API")
+                .title("ms-pinless-party-create-profile-post-v1")
                 .version("1.0")
                 .contact(contact)
-                .description("This API exposes endpoints to create dealer profiles.")
+                .description("This API exposes an endpoint to create dealer profiles.")
                 .termsOfService("#")
                 .license(mitLicense);
 
