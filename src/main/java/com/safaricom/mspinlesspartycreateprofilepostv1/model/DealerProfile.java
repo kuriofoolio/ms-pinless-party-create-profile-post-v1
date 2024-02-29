@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.safaricom.mspinlesspartycreateprofilepostv1.model.enums.Status;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,7 +45,7 @@ public class DealerProfile {
     private Long msisdn;
 
     @Column(name = "status")
-    private String status;
+    private Status status;
 
     @Column(name = "user_type")
     @Builder.Default

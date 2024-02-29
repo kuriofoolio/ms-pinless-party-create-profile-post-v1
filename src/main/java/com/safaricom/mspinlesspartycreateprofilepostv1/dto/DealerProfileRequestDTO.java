@@ -3,6 +3,7 @@ package com.safaricom.mspinlesspartycreateprofilepostv1.dto;
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.safaricom.mspinlesspartycreateprofilepostv1.model.enums.Status;
 
 import jakarta.persistence.Column;
 
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
+
 
 public class DealerProfileRequestDTO {
 
@@ -30,7 +32,7 @@ public class DealerProfileRequestDTO {
     private Long msisdn;
 
     @Column(name = "status")
-    private String status;
+    private Status status;
 
     @Column(name = "user_type")
     @Builder.Default
@@ -69,5 +71,6 @@ public class DealerProfileRequestDTO {
     public void setOtherField(String key, Object value) {
         throw new IllegalArgumentException("Field " + key + " is not allowed in the request body");
     }
+
 
 }
