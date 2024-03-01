@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.aspectj.weaver.ast.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,19 +13,61 @@ import org.springframework.stereotype.Service;
 
 import com.safaricom.mspinlesspartycreateprofilepostv1.dto.DealerProfileRequestDTO;
 import com.safaricom.mspinlesspartycreateprofilepostv1.dto.DealerProfileResponseDTO;
+import com.safaricom.mspinlesspartycreateprofilepostv1.dto.TestDTO;
 import com.safaricom.mspinlesspartycreateprofilepostv1.exceptions.UserNotFoundException;
 import com.safaricom.mspinlesspartycreateprofilepostv1.model.DealerProfile;
+import com.safaricom.mspinlesspartycreateprofilepostv1.model.RelatedCustomerAccount;
 import com.safaricom.mspinlesspartycreateprofilepostv1.repository.DealerProfileRepository;
+import com.safaricom.mspinlesspartycreateprofilepostv1.repository.RelatedCustomerAccountRepository;
 
 @Service
 public class DealerProfileService {
 
     private DealerProfileRepository dealerProfileRepository;
+    private RelatedCustomerAccountRepository relatedCustomerAccountRepository;
 
     // service autowires from the repository
     @Autowired
     public void setRepository(DealerProfileRepository dealerProfileRepository) {
         this.dealerProfileRepository = dealerProfileRepository;
+    }
+
+    @Autowired
+    public void setRepository(RelatedCustomerAccountRepository relatedCustomerAccountRepository) {
+        this.relatedCustomerAccountRepository = relatedCustomerAccountRepository;
+    }
+
+    /**
+     * 
+     * @param testDTO
+     * @version 1.0.0
+     * @since 1.0.0
+     * @return ResponseEntity<DealerProfileResponseDTO>
+     * @apiNote This method is used to add a new dealer profile to the database
+     * @exception URISyntaxException
+     * @throws URISyntaxException
+     */
+    public ResponseEntity<DealerProfileResponseDTO> makeRelatedCustomerAccount(
+            TestDTO testDTO) throws URISyntaxException {
+
+        RelatedCustomerAccount relatedCustomerAccount = RelatedCustomerAccount.builder()
+                .details(testDTO.details)
+                .relatedCustomerAccount(testDTO.relatedCustomerAccount)
+                .build();
+
+        RelatedCustomerAccount newRelatedCustomerAccount = relatedCustomerAccountRepository
+                .save(relatedCustomerAccount);
+
+        DealerProfileResponseDTO dealerProfileResponseDTO = DealerProfileResponseDTO.builder()
+                .responseCode(1000)
+                .responseDescription("success")
+                .responseSummary("Related customer account created successfully")
+                .build();
+
+        return ResponseEntity
+                .created(new URI("/auth/partnerPartyAPI/v1/partnerParty" + newRelatedCustomerAccount.getUserId()))
+                .body(dealerProfileResponseDTO);
+
     }
 
     /**

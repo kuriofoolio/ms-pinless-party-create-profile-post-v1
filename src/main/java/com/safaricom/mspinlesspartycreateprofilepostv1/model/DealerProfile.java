@@ -85,6 +85,4 @@ public class DealerProfile {
     @Column(name = "latitude")
     private BigDecimal latitude;
 
-    
-
 }
