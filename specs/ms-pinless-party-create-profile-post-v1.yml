@@ -102,7 +102,11 @@
                         "format": "int64"
                     },
                     "status": {
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                            "N",
+                            "Y"
+                        ]
                     },
                     "userType": {
                         "type": "string"

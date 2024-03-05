@@ -4,8 +4,8 @@ public class enums {
 
     // generate enums for true and false values for status
     public enum Status {
-        Y("Y"),
-        N("N");
+        N("N"), Y("Y"); 
+        
 
         private String value;
 

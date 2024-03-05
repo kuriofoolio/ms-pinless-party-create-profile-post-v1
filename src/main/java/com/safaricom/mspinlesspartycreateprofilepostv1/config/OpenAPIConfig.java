@@ -2,6 +2,7 @@ package com.safaricom.mspinlesspartycreateprofilepostv1.config;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,10 +15,10 @@ import io.swagger.v3.oas.models.servers.Server;
 @Configuration
 public class OpenAPIConfig {
 
-    @org.springframework.beans.factory.annotation.Value("${kuriag.openapi.dev-url}")
+    @Value("${kuriag.openapi.dev-url}")
     private String devUrl;
 
-    @org.springframework.beans.factory.annotation.Value("${kuriag.openapi.prod-url}")
+    @Value("${kuriag.openapi.prod-url}")
     private String prodUrl;
 
     @Bean

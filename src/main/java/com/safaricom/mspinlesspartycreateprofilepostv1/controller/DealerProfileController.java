@@ -47,7 +47,7 @@ public class DealerProfileController {
          * @since 1.0.0
          * @throws URISyntaxException
          */
-
+        
         @Operation(summary = "Create a dealer profile", description = "Create a dealer profile object by specifying a couple of fields", tags = {
                         "Create a dealer profile" })
         @ApiResponses({
@@ -66,52 +66,6 @@ public class DealerProfileController {
                 return dealerProfileService.createDealerProfile(dealerProfileRequestDTO);
         }
 
-        // /**
-        // *
-        // * @param userid
-        // * @return
-        // */
-
-        // @Operation(summary = "Get user account details by ID", description = "Get a
-        // user account object by specifying its id. The response is User Account object
-        // with id, username, createdat, active, and balance.", tags = {
-        // "Get a user account" })
-        // @ApiResponses({
-        // @ApiResponse(responseCode = "200", content = {
-        // @Content(schema = @Schema(implementation = UserAccount.class), mediaType =
-        // "application/json") }),
-        // @ApiResponse(responseCode = "404", content = {
-        // @Content(schema = @Schema(implementation = UserAccountResponseDTO.class),
-        // mediaType = "application/json") }),
-        // })
-        // @GetMapping("/users/{userid}")
-        // public ResponseEntity<UserAccount> getUserAccountDetailsById(@PathVariable
-        // Long userid) {
-        // return userAccountService.getUserAccountDetailsById(userid);
-
-        // }
-
-        // /**
-        // * @apiNote Get all user accounts
-        // * @param userAccountRequest
-        // * @since 1.0
-        // * @version 1.0
-        // * @return
-        // */
-
-        // @Operation(summary = "Get all user accounts details", description = "Get all
-        // user account objects. The response is a list of User Account objects with id,
-        // username, createdat, active, and balance.", tags = {
-        // "Get user accounts" })
-        // @ApiResponses({
-        // @ApiResponse(responseCode = "200", content = {
-        // @Content(schema = @Schema(implementation = UserAccountResponseDTO.class),
-        // mediaType = "application/json") }),
-
-        // })
-        // @GetMapping("/users")
-        // public List<UserAccount> getAllUserAccountDetails() {
-        // return userAccountService.getAllUserAccountDetails();
-        // }
+       
 
 }

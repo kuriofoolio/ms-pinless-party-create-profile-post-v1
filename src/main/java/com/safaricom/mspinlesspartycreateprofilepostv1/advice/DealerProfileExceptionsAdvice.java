@@ -9,23 +9,11 @@ import org.springframework.web.client.HttpServerErrorException.InternalServerErr
 import org.springframework.web.context.request.WebRequest;
 
 import com.safaricom.mspinlesspartycreateprofilepostv1.dto.DealerProfileResponseDTO;
-import com.safaricom.mspinlesspartycreateprofilepostv1.exceptions.UserNotFoundException;
 
 @ControllerAdvice
 public class DealerProfileExceptionsAdvice {
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<DealerProfileResponseDTO> userNotFoundHandler(UserNotFoundException ex) {
-        DealerProfileResponseDTO dealerProfileResponseDTO = DealerProfileResponseDTO.builder()
-
-                .responseCode(HttpStatus.NOT_FOUND.value())
-                .responseDescription("failed")
-                .responseSummary(ex.getMessage())
-                .build();
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(dealerProfileResponseDTO);
-    }
-
-    @ExceptionHandler(InternalServerError.class)
+    
+@ExceptionHandler(InternalServerError.class)
     public ResponseEntity<?> internalServerErrorHandler(InternalServerError err, WebRequest request) {
 
         // String errorMessage = "Sorry, an unexpected error occurred!";
@@ -56,5 +44,7 @@ public class DealerProfileExceptionsAdvice {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(dealerProfileResponseDTO);
     }
+
+
 
 }
